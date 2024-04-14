@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\BrandController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\BookController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,9 +41,18 @@ Route::put('/brands/{id}', [BrandController::class, 'update']);
 Route::delete('/brands/{id}', [BrandController::class, 'destroy']);
 
 
-//Product route
-// Route::post('/product', [ProductController::class,'']);
+//Author routes
+Route::post('/authors', [AuthorController::class,'store']);
+Route::get('/authors', [AuthorController::class,'index']);
+Route::get('/authors/{id}', [AuthorController::class, 'show']);
+Route::put('/authors/{id}', [AuthorController::class, 'update']);
+Route::delete('/authors/{id}', [AuthorController::class, 'destroy']);
 
 
-// Category route 
-// Route::post('/category', [CategoryController::class,'']);
+//Book routes
+Route::post('/books', [BookController::class,'store']);
+Route::get('/books', [BookController::class,'index']);
+Route::get('/books/{id}', [BookController::class, 'show']);
+Route::put('/books/{id}', [BookController::class, 'update']);
+Route::delete('/books/{id}', [BookController::class, 'destroy']);
+
