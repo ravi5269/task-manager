@@ -7,9 +7,10 @@ use App\Http\Controllers\DealerController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
-
-
-
+use App\Http\Controllers\StoresController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\StudentCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,27 @@ Route::get('/books', [BookController::class,'index']);
 Route::get('/books/{id}', [BookController::class, 'show']);
 Route::put('/books/{id}', [BookController::class, 'update']);
 Route::delete('/books/{id}', [BookController::class, 'destroy']);
+
+
+//Student  routes
+Route::get('/students', [StudentController::class, 'index']);
+Route::post('/students', [StudentController::class, 'store']);
+Route::get('/students/{id}', [StudentController::class, 'show']);
+Route::put('/students/{id}', [StudentController::class, 'update']);
+Route::delete('/students/{id}', [StudentController::class, 'destroy']);
+
+//Course routes
+Route::get('/courses', [CourseController::class, 'index']);
+Route::post('/courses', [CourseController::class, 'store']);
+Route::get('/courses/{id}', [CourseController::class, 'show']);
+Route::put('/courses/{id}', [CourseController::class, 'update']);
+Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
+
+//pivot table 
+Route::post('/assign-course-to-student', [StudentCourseController::class, 'assignCourseToStudent']);
+Route::get('count', [StudentCourseController::class,'count']);
+
+
+Route::post('/students/{studentId}/attach-courses', [StudentController::class, 'attachCourses']);
+Route::post('/students/{studentId}/detachCourses', [StudentController::class, 'detachCourses']);
 
